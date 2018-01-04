@@ -1,0 +1,30 @@
+﻿<mahapps:MetroWindow x:Class="Desktop.UI.Windows.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Desktop.UI.Windows"
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        TitleAlignment="Center" 
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="Авторизация" Height="200" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="TbLogin" Text="StaffAdmin" Grid.Row="0" Margin="10" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="TbPassword" Text="mati5int" Grid.Row="1" Margin="10" VerticalContentAlignment="Center"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BConnectAdmin" Grid.Column="0" Margin="10, 15" Content="Войти" VerticalContentAlignment="Center" Click="BConnectAdmin_Click"/>
+            <Button x:Name="BConnectGuest" Grid.Column="1" Margin="10, 15" Content="Гость" VerticalContentAlignment="Center" Click="BConnectGuest_Click"/>
+        </Grid>
+       
+    </Grid>
+</mahapps:MetroWindow>

@@ -1,0 +1,96 @@
+﻿<mahapps:MetroWindow x:Class="Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mahapps="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Desktop"
+        mc:Ignorable="d" 
+        TitleAlignment="Center" 
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="База сотрудников" Height="500" Width="800"
+        Loaded="MetroWindow_Loaded">
+    <mahapps:MetroWindow.RightWindowCommands>
+        <mahapps:WindowCommands>
+            <Button x:Name="BCreateBackup"  Content="Сделать копию"/>
+        </mahapps:WindowCommands>
+    </mahapps:MetroWindow.RightWindowCommands>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Сотрудники или отпуски" Grid.Column="0">
+            <Button x:Name="BAddEmployee" Grid.Column="0" Margin="10" Content="Добавить" Click="AddClick"/>
+            </GroupBox>
+            <Grid x:Name="GShowEmps" Grid.Column="1" IsEnabled="false">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <ComboBox x:Name="CbPositions" Grid.Row="0" Margin="5" SelectionChanged="CBPositions_SelectionChanged"
+                              ItemsSource="{Binding}" DisplayMemberPath="Description" />
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<TextBox x:Name="TBEmpName" Margin="10" Grid.Column="0"/>
+                        <Button x:Name="BShowEmployees" Grid.Column="1" Margin="10" Content="Показать" Click="BShowEmployees_Click"/>-->
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+        <TabControl x:Name="TcTables" Grid.Row="1" Margin="5" SelectionChanged="TCTables_SelectionChanged">
+            <TabItem Header="Офисы">
+                <DataGrid x:Name="DgOffices" IsReadOnly="True" Margin="5" ColumnWidth="*" AutoGenerateColumns="False"
+                          MouseDoubleClick="DG_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Header="Отделов" Binding="{Binding DepartmentsCount}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Отделы">
+                <DataGrid x:Name="DgDepartments" IsReadOnly="True" Margin="5" ColumnWidth="*" AutoGenerateColumns="False"
+                          MouseDoubleClick="DG_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название" Binding="{Binding Description}" />
+                        <DataGridTextColumn Header="Сотрудников" Binding="{Binding EmployeesCount}" />
+                        <DataGridTextColumn Header="Офис" Binding="{Binding Office}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Сотрудники">
+                <DataGrid x:Name="DgEmployees" IsReadOnly="True" Margin="5" ColumnWidth="*" AutoGenerateColumns="False"
+                          MouseDoubleClick="DG_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}" />
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}" />
+                        <DataGridTextColumn Header="Отпусков" Binding="{Binding VacationsCount}" />
+                        <DataGridTextColumn Header="Должность" Binding="{Binding Position}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Отпуски">
+                <DataGrid x:Name="DgVacations" IsReadOnly="True" ColumnWidth="*" Margin="5" AutoGenerateColumns="False"
+                          MouseDoubleClick="DG_MouseDoubleClick">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding EmpName}" />
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding EmpSurname}" />
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding EmpPatronymic}" />
+                        <DataGridTextColumn Header="Начало" Binding="{Binding BeginDate}" />
+                        <DataGridTextColumn Header="Конец" Binding="{Binding EndDate}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</mahapps:MetroWindow>

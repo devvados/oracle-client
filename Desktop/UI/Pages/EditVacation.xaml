@@ -1,0 +1,29 @@
+﻿<Page x:Class="Desktop.UI.Pages.EditVacation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Desktop.UI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="250" d:DesignWidth="300"
+      Title="Редактировать отпуск" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="10">
+                <Label Content="Дата начала" Margin="15,0,15,0"/>
+                <DatePicker x:Name="DpBegin" Margin="15,0,15,0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="10">
+                <Label Content="Дата окончания" Margin="15,0,15,0"/>
+                <DatePicker x:Name="DpEnd" Margin="15,0,15,0"/>
+            </StackPanel>
+            <Button x:Name="ButOk" Grid.Row="2" Content="Сохранить" Margin="50,15" Click="ButOK_Click"/>
+        </Grid>
+    </Grid>
+</Page>
